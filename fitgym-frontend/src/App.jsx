@@ -1,13 +1,12 @@
-import './App.css'
+import React from "react";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 
-function App() {
+export default function App() {
   return (
-    <>
-     <h1 className="text-4xl text-blue-600 font-extrabold">
-  Tailwind works! 🎉🚀
-</h1>
-    </>
-  )
+    <div className="min-h-screen bg-gray-100">
+      <Navbar />
+      <Home />
+    </div>
+  );
 }
-
-export default App
