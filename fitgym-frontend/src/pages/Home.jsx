@@ -4,7 +4,6 @@ import heroImg2 from "../assets/girl2.jpg";
 import didaImg from "../assets/dida.jpg";
 import girl1Img from "../assets/girl1.jpg";
 import dida2Img from "../assets/dida2.jpg";
-import bareliteImg from "../assets/barelite.jpg";
 import all3Img from "../assets/all3.jpg";
 import { Clock, Users, MapPin, ArrowRight, Star, Zap, Target, Heart, Dumbbell } from "lucide-react";
 
@@ -30,13 +29,6 @@ export default function Home() {
       description: "Rejoignez une famille soudée où l'entraide et la motivation sont nos valeurs fondamentales. Événements exclusifs, défis communautaires et ambiance unique vous attendent pour transformer votre parcours fitness en expérience mémorable.",
       icon: <Heart className="w-6 h-6 text-pink-500" />,
       stats: ["Événements Mensuels", "Groupes d'Entraide", "Ambiance Familiale"]
-    },
-    {
-      image: bareliteImg,
-      title: "ESPACES PREMIUM",
-      description: "Nos installations ont été conçues pour l'excellence. Zones spécialisées, environnement stimulant et équipements haut de gamme créent l'espace parfait pour repousser vos limites dans des conditions optimales.",
-      icon: <Dumbbell className="w-6 h-6 text-green-500" />,
-      stats: ["Zones Spécialisées", "Équipement Pro", "Confort Maximum"]
     }
   ];
 
@@ -214,6 +206,124 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Prix Section */}
+          <div className="mt-20">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+                LES OFFRES <span className="text-red-600">D'ABONNEMENTS</span>
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              
+
+              {/* SANS ENGAGEMENT */}
+              <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700 hover:border-red-500 transition-all duration-300">
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-2">SANS ENGAGEMENT</h3>
+                  <div className="flex items-baseline justify-center gap-1 mb-2">
+                    <span className="text-4xl font-black text-red-500">340DHS</span>
+                    <span className="text-gray-400 text-lg">/mois*</span>
+                  </div>
+                </div>
+
+                <div className="space-y-4 mb-6">
+                  <div className="text-center text-gray-300">
+                    Le premier prélèvement à <span className="font-bold text-white">240DHS</span>
+                  </div>
+                  <div className="text-center text-gray-300">
+                    Frais d'adhésion de <span className="font-bold text-white">400DHS</span>
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <div className="text-gray-300 text-center mb-2">En option :</div>
+                  <div className="flex justify-center space-x-6 text-sm text-gray-400">
+                    <div>• Water Station</div>
+                    <div>• Acces Plus</div>
+                  </div>
+                </div>
+
+                <button className="w-full bg-red-600 text-white font-bold py-4 rounded-xl hover:bg-red-500 transition-all duration-300 transform hover:scale-105">
+                  J'EN PROFITE
+                </button>
+              </div>
+
+              {/* OFFRE CLASSIQUE - TOP VENTE */}
+              <div className="relative bg-gray-800/50 rounded-2xl p-8 border border-gray-700 hover:border-yellow-500 transition-all duration-300">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <div className="bg-yellow-500 text-black font-bold px-6 py-2 rounded-full text-sm">
+                    TOP VENTE
+                  </div>
+                </div>
+                
+                <div className="text-center mb-6 pt-4">
+                  <h3 className="text-2xl font-bold text-white mb-2">OFFRE CLASSIQUE</h3>
+                  <div className="flex items-baseline justify-center gap-1 mb-2">
+                    <span className="text-4xl font-black text-yellow-500">290DHS</span>
+                    <span className="text-gray-400 text-lg">/mois</span>
+                  </div>
+                </div>
+
+                <div className="space-y-4 mb-6">
+                  <div className="text-center text-gray-300">
+                    Le premier prélèvement à <span className="font-bold text-white">190DHS</span>
+                  </div>
+                  <div className="text-center text-gray-300">
+                    Frais d'adhésion de <span className="font-bold text-white">300DHS</span>
+                  </div>
+                  <div className="text-center text-gray-300">
+                    Engagement de <span className="font-bold text-white">12 mois</span>
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <div className="text-gray-300 text-center mb-2">En option :</div>
+                  <div className="flex justify-center space-x-6 text-sm text-gray-400">
+                    <div>• Water Station</div>
+                    <div>• Acces Plus</div>
+                  </div>
+                </div>
+
+                <button className="w-full bg-yellow-500 text-black font-bold py-4 rounded-xl hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105">
+                  J'EN PROFITE
+                </button>
+              </div>
+
+              {/* OFFRE JEUNE */}
+              <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700 hover:border-red-500 transition-all duration-300">
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-2">SANS ENGAGEMENT</h3>
+                  <div className="flex items-baseline justify-center gap-1 mb-2">
+                    <span className="text-4xl font-black text-red-500">340DHS</span>
+                    <span className="text-gray-400 text-lg">/mois*</span>
+                  </div>
+                </div>
+
+                <div className="space-y-4 mb-6">
+                  <div className="text-center text-gray-300">
+                    Le premier prélèvement à <span className="font-bold text-white">240DHS</span>
+                  </div>
+                  <div className="text-center text-gray-300">
+                    Frais d'adhésion de <span className="font-bold text-white">400DHS</span>
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <div className="text-gray-300 text-center mb-2">En option :</div>
+                  <div className="flex justify-center space-x-6 text-sm text-gray-400">
+                    <div>• Water Station</div>
+                    <div>• Acces Plus</div>
+                  </div>
+                </div>
+
+                <button className="w-full bg-red-600 text-white font-bold py-4 rounded-xl hover:bg-red-500 transition-all duration-300 transform hover:scale-105">
+                  J'EN PROFITE
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Bottom CTA */}
