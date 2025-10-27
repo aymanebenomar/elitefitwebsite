@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
-import logoImg from "../assets/eliteblacklogo.png"; // replace with your gym logo
+import { Link, useLocation } from "react-router-dom";
+import logoImg from "../assets/eliteblacklogo.png";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,13 +16,34 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Function to handle smooth scrolling to sections
+  const scrollToSection = (sectionId) => {
+    if (location.pathname !== "/") {
+      // If we're not on the home page, navigate to home first
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setMenuOpen(false);
+  };
+
+  // Function to handle regular navigation
+  const handleNavigation = (path) => {
+    setMenuOpen(false);
+    // Regular page navigation will be handled by React Router
+  };
+
   const navLinks = [
-    { id: "concept", label: "Concept", path: "/" },
-    { id: "abonnements", label: "Abonnements", path: "/abonnements" },
-    { id: "clubs", label: "Clubs", path: "/clubs" },
-    { id: "activities", label: "Activités", path: "/activities" },
-    { id: "blog", label: "Blog", path: "/blog" },
-    { id: "preinscription", label: "Pré-inscription", path: "/preinscription" },
+    { id: "concept", label: "Concept", path: "/", isSection: true },
+    { id: "abonnements", label: "Abonnements", path: "/abonnements", isSection: false },
+    { id: "clubs", label: "Clubs", path: "/clubs", isSection: false },
+    { id: "activities", label: "Activités", path: "/activities", isSection: false },
+    { id: "blog", label: "Blog", path: "/blog", isSection: false },
+    { id: "preinscription", label: "Pré-inscription", path: "/preinscription", isSection: false },
   ];
 
   return (
@@ -43,19 +65,35 @@ const Navbar = () => {
           <ul className={`flex items-center ${scrolled ? "gap-4" : "gap-6"} text-white`}>
             {navLinks.map((link) => (
               <li key={link.id} className="group cursor-pointer">
-                <Link to={link.path}>{link.label}</Link>
+                {link.isSection ? (
+                  <button
+                    onClick={() => scrollToSection(link.id)}
+                    className="hover:text-eliteGold transition-colors duration-300"
+                  >
+                    {link.label}
+                  </button>
+                ) : (
+                  <Link 
+                    to={link.path} 
+                    className="hover:text-eliteGold transition-colors duration-300"
+                    onClick={() => handleNavigation(link.path)}
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
         </nav>
 
         {/* Contact Button */}
-        <div
+        <button
+          onClick={() => scrollToSection('contact')}
           className={`hidden md:flex bg-eliteGold hover:bg-yellow-500 text-eliteBlack font-bold rounded transition-all duration-500 ease-in-out
             ${scrolled ? "px-2 py-1 text-sm" : "px-4 py-2"}`}
         >
           <span>Contact</span>
-        </div>
+        </button>
 
         {/* Mobile Toggle */}
         <button className="md:hidden text-white" onClick={() => setMenuOpen(!menuOpen)}>
@@ -72,11 +110,33 @@ const Navbar = () => {
         <div className="bg-eliteBlack/95 rounded-xl shadow-lg flex flex-col items-center px-6 py-4">
           <ul className="flex flex-col items-center gap-4 text-white font-light text-base">
             {navLinks.map((link) => (
-              <li key={link.id} className="cursor-pointer" onClick={() => setMenuOpen(false)}>
-                <Link to={link.path}>{link.label}</Link>
+              <li key={link.id} className="cursor-pointer">
+                {link.isSection ? (
+                  <button
+                    onClick={() => scrollToSection(link.id)}
+                    className="hover:text-eliteGold transition-colors duration-300"
+                  >
+                    {link.label}
+                  </button>
+                ) : (
+                  <Link 
+                    to={link.path} 
+                    className="hover:text-eliteGold transition-colors duration-300"
+                    onClick={() => handleNavigation(link.path)}
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
-            <li className="cursor-pointer">Contact</li>
+            <li>
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="hover:text-eliteGold transition-colors duration-300"
+              >
+                Contact
+              </button>
+            </li>
           </ul>
         </div>
       </div>
