@@ -35,7 +35,7 @@ export default function Concepts() {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-b from-black to-gray-900">
+    <section id="concepts" className="py-16 md:py-20 bg-gradient-to-b from-black to-gray-900 scroll-mt-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <motion.div 
           className="text-center mb-16"
