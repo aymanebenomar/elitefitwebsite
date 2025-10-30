@@ -1,7 +1,6 @@
 import React from "react";
 import Hero from "../components/Hero";
 import Concepts from "../components/Concepts";
-import Pricing from "../components/Princing";
 import Footer from "../components/Footer";
 
 export default function Home() {

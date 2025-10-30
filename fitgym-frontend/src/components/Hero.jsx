@@ -16,16 +16,16 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(120,0,0,0.2)_0%,_transparent_50%)]"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10 py-16 md:py-20">
-        
+
         {/* Text Content */}
-        <motion.div 
+        <motion.div
           className="flex-1 space-y-6 text-center md:text-left"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="space-y-4">
-            <motion.div 
+            <motion.div
               className="inline-flex items-center gap-2 bg-red-600/20 px-4 py-2 rounded-full border border-red-600/30"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -124,15 +124,15 @@ export default function Hero() {
             
             {/* Third Image - dida.jpg */}
             <div className="absolute -bottom-6 -left-6 sm:-bottom-10 sm:-left-10 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 transform -rotate-6">
-              <img 
-                src={didaImg} 
-                alt="Personal Training" 
+              <img
+                src={didaImg}
+                alt="Personal Training"
                 className="w-full h-full object-cover rounded-2xl shadow-2xl border-4 border-yellow-500"
               />
             </div>
 
             {/* Stats Card */}
-            <motion.div 
+            <motion.div
               className="absolute -bottom-4 -right-4 sm:-bottom-5 sm:-right-5 bg-gray-900/90 backdrop-blur-sm p-4 sm:p-6 rounded-2xl border border-gray-700 shadow-2xl"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}

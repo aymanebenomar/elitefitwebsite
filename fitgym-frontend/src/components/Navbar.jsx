@@ -19,10 +19,11 @@ const Navbar = () => {
   const scrollToSection = (sectionId) => {
     const doScroll = () => {
       const section = document.getElementById(sectionId);
-      if (!section) return;
+      if (!section) return; // prevent crash if section not found
 
       const navbarHeight = navbarRef.current?.offsetHeight || 90;
-      const yOffset = section.getBoundingClientRect().top + window.scrollY - (navbarHeight + 15);
+      const offset = sectionId === "abonnements" ? 20 : -50;
+      const yOffset = section.getBoundingClientRect().top + window.scrollY - (navbarHeight + offset);
 
       window.scrollTo({ top: yOffset, behavior: "smooth" });
       setMenuOpen(false);
@@ -30,7 +31,7 @@ const Navbar = () => {
 
     if (location.pathname !== "/") {
       navigate("/");
-      setTimeout(doScroll, 150);
+      setTimeout(doScroll, 200);
     } else {
       doScroll();
     }
