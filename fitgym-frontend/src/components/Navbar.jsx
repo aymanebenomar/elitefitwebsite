@@ -40,7 +40,7 @@ const Navbar = () => {
   const navLinks = [
     { id: "concept", label: "Concept", isSection: true },
     { id: "abonnements", label: "Abonnements", isSection: true },
-    { id: "clubs", label: "Clubs", path: "/clubs", isSection: false },
+    { id: "clubs", label: "Club", path: "/club", isSection: false },
     { id: "activities", label: "Activités", path: "/activities", isSection: false },
     { id: "blog", label: "Blog", path: "/blog", isSection: false },
     { id: "preinscription", label: "Pré-inscription", path: "/preinscription", isSection: false },
