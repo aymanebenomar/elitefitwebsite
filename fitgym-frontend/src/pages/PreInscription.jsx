@@ -6,7 +6,7 @@ import { Dumbbell } from "lucide-react";
 const Preinscription = () => {
   return (
     <div
-      className="relative w-full min-h-screen bg-center bg-cover bg-no-repeat flex items-center justify-center text-white"
+      className="relative w-full min-h-screen bg-center bg-cover bg-no-repeat text-white py-20"
       style={{
         backgroundImage: `url(${bgImg})`,
       }}
@@ -15,11 +15,11 @@ const Preinscription = () => {
       <div className="absolute inset-0 bg-black/70" />
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-6xl px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Section: Info */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           className="space-y-6 text-left"
         >
@@ -31,7 +31,8 @@ const Preinscription = () => {
           </div>
 
           <p className="text-gray-300 leading-relaxed">
-            Transforme ton corps, ton mental et ton énergie avec <span className="text-red-500 font-semibold">ELITE CLUB</span>.  
+            Transforme ton corps, ton mental et ton énergie avec{" "}
+            <span className="text-red-500 font-semibold">ELITE CLUB</span>.  
             Nos coachs experts t’accompagneront pour atteindre tes objectifs plus vite que jamais.
           </p>
 
@@ -43,7 +44,7 @@ const Preinscription = () => {
         {/* Right Section: Form */}
         <motion.form
           initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           className="bg-black/60 p-8 rounded-2xl border border-gray-700 shadow-xl backdrop-blur-md grid grid-cols-1 gap-5"
         >

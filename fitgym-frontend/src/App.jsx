@@ -6,7 +6,6 @@ import OurClub from "./pages/OurClub";
 import Preinscription from "./pages/PreInscription";
 import Footer from "./components/Footer";
 
-
 export default function App() {
   return (
     <div className="bg-black text-white font-sans overflow-x-hidden">
@@ -18,15 +17,17 @@ export default function App() {
       </section>
 
       {/* --- CLUB SECTION --- */}
-      <section id="club" className="scroll-mt-16 md:scroll-mt-24">
+      <section id="clubs" className="scroll-mt-16 md:scroll-mt-24">
         <OurClub />
       </section>
 
-      {/* --- BLOG SECTION --- */}
-      <section id="Preinscription" className="scroll-mt-16 md:scroll-mt-24">
+      {/* --- PREINSCRIPTION SECTION --- */}
+      <section id="preinscription" className="scroll-mt-16 md:scroll-mt-24">
         <Preinscription />
       </section>
-      <section id="Footer" className="scroll-mt-16 md:scroll-mt-24">
+
+      {/* --- FOOTER --- */}
+      <section id="footer" className="scroll-mt-16 md:scroll-mt-24">
         <Footer />
       </section>
     </div>

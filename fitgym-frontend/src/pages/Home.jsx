@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "../components/Hero";
 import Concepts from "../components/Concepts";
 import Footer from "../components/Footer";
+import Club from "../pages/OurClub";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
       <section id="concept" className="scroll-mt-16 md:scroll-mt-24">
         <Concepts />
       </section>  
-
+      
       {/* Contact */}
       <section id="contact">
       </section>

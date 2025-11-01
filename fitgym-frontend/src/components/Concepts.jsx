@@ -129,27 +129,7 @@ export default function Concepts() {
         </div>
 
         {/* Bottom CTA */}
-        <motion.div 
-          className="text-center mt-20"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-        >
-          <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700 max-w-2xl mx-auto">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Prêt à Commencer Votre Transformation?
-            </h3>
-            <p className="text-gray-300 mb-6 italic">
-              Rejoignez les 2000+ membres qui ont déjà transformé leur vie avec Elite Fit
-            </p>
-            <button className="bg-yellow-500 text-black font-bold px-8 py-4 rounded-xl hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-yellow-500/25 flex items-center gap-3 mx-auto">
-              <Users className="w-5 h-5" />
-              COMMENCER MAINTENANT
-              <ArrowRight className="w-5 h-5" />
-            </button>
-          </div>
-        </motion.div>
+        
       </div>
     </section>
   );

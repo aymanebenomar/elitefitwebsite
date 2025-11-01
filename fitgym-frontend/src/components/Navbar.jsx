@@ -22,7 +22,7 @@ const Navbar = () => {
       if (!section) return; // prevent crash if section not found
 
       const navbarHeight = navbarRef.current?.offsetHeight || 90;
-      const offset = sectionId === "abonnements" ? 20 : -50;
+      const offset = sectionId === "abonnements" ? 20 : -80;
       const yOffset = section.getBoundingClientRect().top + window.scrollY - (navbarHeight + offset);
 
       window.scrollTo({ top: yOffset, behavior: "smooth" });
@@ -40,10 +40,8 @@ const Navbar = () => {
   const navLinks = [
     { id: "concept", label: "Concept", isSection: true },
     { id: "abonnements", label: "Abonnements", isSection: true },
-    { id: "clubs", label: "Club", path: "/club", isSection: false },
-    { id: "activities", label: "Activités", path: "/activities", isSection: false },
-    { id: "blog", label: "Blog", path: "/blog", isSection: false },
-    { id: "preinscription", label: "Pré-inscription", path: "/preinscription", isSection: false },
+    { id: "clubs", label: "Club", isSection: true },
+    { id: "preinscription", label: "Pré-inscription", isSection: true },
   ];
 
   return (
