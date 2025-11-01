@@ -1,8 +1,8 @@
 // src/pages/Blog.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import Footer from "../components/Footer";
 import blogImg from "../assets/all2.png";
+import Footer from "../components/Footer";
 
 const Blog = () => {
   return (
@@ -80,8 +80,10 @@ const Blog = () => {
         </p>
       </motion.section>
 
-      {/* Footer */}
-      <Footer />
+      {/* Smooth Transition + Footer */}
+      <div className="w-full bg-gradient-to-b from-black to-gray-900">
+        <Footer />
+      </div>
     </div>
   );
 };
