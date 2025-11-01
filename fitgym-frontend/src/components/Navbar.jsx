@@ -54,7 +54,6 @@ const Navbar = () => {
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         <Link to="/" onClick={() => scrollToSection("hero")} className="flex items-center gap-3 cursor-pointer">
           <img src={logoImg} alt="logo" className="w-10 h-10" />
-          <span className="font-bold text-eliteGold text-xl">ELITE</span>
         </Link>
 
         <nav className="hidden md:block">
@@ -81,8 +80,9 @@ const Navbar = () => {
           </ul>
         </nav>
 
+        {/* Contact button fixed to scroll to preinscription */}
         <button
-          onClick={() => scrollToSection("contact")}
+          onClick={() => scrollToSection("preinscription")}
           className={`hidden md:flex bg-eliteGold hover:bg-yellow-500 text-eliteBlack font-bold rounded transition-all duration-500 
           ${scrolled ? "px-2 py-1 text-sm" : "px-4 py-2"}`}
         >
@@ -120,8 +120,9 @@ const Navbar = () => {
               </li>
             ))}
             <li>
+              {/* Mobile Contact button fixed to scroll to preinscription */}
               <button
-                onClick={() => scrollToSection("contact")}
+                onClick={() => scrollToSection("preinscription")}
                 className="hover:text-eliteGold transition-colors duration-300"
               >
                 Contact
