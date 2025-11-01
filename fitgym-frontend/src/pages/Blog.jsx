@@ -4,6 +4,45 @@ import { motion } from "framer-motion";
 import blogImg from "../assets/all2.png";
 import Footer from "../components/Footer";
 
+export default function MotionExample() {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white space-y-8">
+      {/* Fade In */}
+      <motion.h1
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="text-5xl font-extrabold text-red-600"
+      >
+        Fade In Animation
+      </motion.h1>
+
+      {/* Slide In from Left */}
+      <motion.div
+        initial={{ x: -200, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="bg-gray-800 p-6 rounded-xl shadow-lg text-lg"
+      >
+        This box slides in from the left 👈
+      </motion.div>
+
+      {/* Scale Up */}
+      <motion.button
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 200 }}
+        className="bg-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors"
+      >
+        Click Me
+      </motion.button>
+    </div>
+  );
+}
+
+
 const Blog = () => {
   return (
     <div className="bg-black text-white w-full overflow-x-hidden">
