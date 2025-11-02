@@ -94,42 +94,35 @@ const Navbar = () => {
         </button>
       </div>
 
+      {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ${menuOpen ? "max-h-96 opacity-100 mt-3" : "max-h-0 opacity-0"}`}
+        className="md:hidden bg-eliteBlack/90 backdrop-blur-md rounded-xl shadow-lg overflow-hidden transition-all duration-500"
+        style={{
+          maxHeight: menuOpen ? '24rem' : '0',
+          opacity: menuOpen ? 1 : 0,
+          marginTop: menuOpen ? '0.75rem' : '0'
+        }}
       >
-        <div className="bg-eliteBlack/95 rounded-xl shadow-lg flex flex-col items-center px-6 py-4">
-          <ul className="flex flex-col items-center gap-4 text-white">
-            {navLinks.map((link) => (
-              <li key={link.id}>
-                {link.isSection ? (
-                  <button
-                    onClick={() => scrollToSection(link.id)}
-                    className="hover:text-eliteGold transition-colors duration-300"
-                  >
-                    {link.label}
-                  </button>
-                ) : (
-                  <Link
-                    onClick={() => setMenuOpen(false)}
-                    to={link.path}
-                    className="hover:text-eliteGold transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                )}
-              </li>
-            ))}
-            <li>
-              {/* Mobile Contact button fixed to scroll to preinscription */}
+        <ul className="flex flex-col items-center gap-4 text-white px-6 py-4">
+          {navLinks.map((link) => (
+            <li key={link.id}>
               <button
-                onClick={() => scrollToSection("preinscription")}
+                onClick={() => scrollToSection(link.id)}
                 className="hover:text-eliteGold transition-colors duration-300"
               >
-                Contact
+                {link.label}
               </button>
             </li>
-          </ul>
-        </div>
+          ))}
+          <li>
+            <button
+              onClick={() => scrollToSection("preinscription")}
+              className="hover:text-eliteGold transition-colors duration-300"
+            >
+              Contact
+            </button>
+          </li>
+        </ul>
       </div>
     </header>
   );

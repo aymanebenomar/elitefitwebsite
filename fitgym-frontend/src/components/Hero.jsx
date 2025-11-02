@@ -6,6 +6,28 @@ import { Clock, Users, MapPin, ArrowRight, Star } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Hero() {
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const navbar = document.querySelector("header"); // get navbar height
+    const navbarHeight = navbar?.offsetHeight || 90;
+
+    // Adjust offset for specific sections
+    const offset =
+      sectionId === "abonnements"
+        ? 20
+        : sectionId === "preinscription"
+        ? -120
+        : sectionId === "clubs"
+        ? -100
+        : -80;
+
+    const yOffset =
+      section.getBoundingClientRect().top + window.scrollY - (navbarHeight + offset);
+    window.scrollTo({ top: yOffset, behavior: "smooth" });
+  };
+
   return (
     <motion.section 
       className="min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-gray-900 to-black"
@@ -15,11 +37,11 @@ export default function Hero() {
     >
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(120,0,0,0.2)_0%,_transparent_50%)]"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10 py-16 md:py-20">
-
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10 py-20 md:py-20">
+        {/* Added extra top padding on mobile with py-20 */}
         {/* Text Content */}
         <motion.div
-          className="flex-1 space-y-6 text-center md:text-left"
+          className="flex-1 space-y-6 text-center md:text-left mt-4 md:mt-0" // <-- subtle mobile shift down
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -85,11 +107,17 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            <button className="bg-yellow-500 text-black font-bold px-6 sm:px-8 py-4 rounded-xl hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-yellow-500/25 flex items-center justify-center gap-2 text-sm sm:text-base">
+            <button 
+              onClick={() => scrollToSection("preinscription")}
+              className="bg-yellow-500 text-black font-bold px-6 sm:px-8 py-4 rounded-xl hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-yellow-500/25 flex items-center justify-center gap-2 text-sm sm:text-base"
+            >
               S'INSCRIRE MAINTENANT
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
-            <button className="border-2 border-white text-white font-bold px-6 sm:px-8 py-4 rounded-xl hover:bg-white hover:text-black transition-all duration-300 text-sm sm:text-base">
+            <button 
+              onClick={() => scrollToSection("clubs")}
+              className="border-2 border-white text-white font-bold px-6 sm:px-8 py-4 rounded-xl hover:bg-white hover:text-black transition-all duration-300 text-sm sm:text-base"
+            >
               DÉCOUVRIR NOTRE CLUB
             </button>
           </motion.div>

@@ -1,24 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 export default function Pricing() {
-  return (
-    <motion.div 
-      className="mt-20"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 1 }}
-    >
-      <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-          LES OFFRES <span className="text-red-600">D'ABONNEMENTS</span>
-        </h2>
-      </div>
+  const [currentCard, setCurrentCard] = useState(1); // Start with middle card (TOP VENTE)
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
-        
-        {/* KARATE JEUNES */}
+  const cards = [
+    {
+      id: 0,
+      title: "KIDS",
+      price: "190DHS",
+      color: "red",
+      content: (
         <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700 hover:border-red-500 transition-all duration-300">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-white mb-2">KIDS</h3>
@@ -50,10 +42,16 @@ export default function Pricing() {
             J'EN PROFITE
           </button>
         </div>
-
-        {/* OFFRE CLASSIQUE - TOP VENTE - Slightly Elevated */}
-        <div className="relative bg-gray-800/50 rounded-2xl p-8 border-2 border-yellow-500 hover:border-yellow-400 transition-all duration-300 -mt-4">
-          <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+      )
+    },
+    {
+      id: 1,
+      title: "BODYBUILDING",
+      price: "200DHS",
+      color: "yellow",
+      content: (
+        <div className="relative bg-gray-800/50 rounded-2xl p-8 border-2 border-yellow-500 hover:border-yellow-400 transition-all duration-300">
+          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
             <div className="bg-yellow-500 text-black font-bold px-6 py-2 rounded-full text-sm">
               TOP VENTE
             </div>
@@ -91,8 +89,14 @@ export default function Pricing() {
             J'EN PROFITE
           </button>
         </div>
-
-        {/* CROSS-FIT */}
+      )
+    },
+    {
+      id: 2,
+      title: "CROSS-FIT",
+      price: "150DHS",
+      color: "red",
+      content: (
         <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700 hover:border-red-500 transition-all duration-300">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-white mb-2">CROSS-FIT</h3>
@@ -123,6 +127,113 @@ export default function Pricing() {
           <button className="w-full bg-red-600 text-white font-bold py-4 rounded-xl hover:bg-red-500 transition-all duration-300 transform hover:scale-105">
             J'EN PROFITE
           </button>
+        </div>
+      )
+    }
+  ];
+
+  const nextCard = () => {
+    setCurrentCard((prev) => (prev + 1) % cards.length);
+  };
+
+  const prevCard = () => {
+    setCurrentCard((prev) => (prev - 1 + cards.length) % cards.length);
+  };
+
+  const handleDragEnd = (event, info) => {
+    const swipeThreshold = 50;
+    if (info.offset.x < -swipeThreshold) {
+      nextCard();
+    } else if (info.offset.x > swipeThreshold) {
+      prevCard();
+    }
+  };
+
+  return (
+    <motion.div 
+      className="mt-20"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1 }}
+    >
+      <div className="text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+          LES OFFRES <span className="text-red-600">D'ABONNEMENTS</span>
+        </h2>
+      </div>
+
+      {/* Desktop View - Unchanged */}
+      <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+        {cards.map((card) => (
+          <div key={card.id} className={card.id === 1 ? "-mt-4" : ""}>
+            {card.content}
+          </div>
+        ))}
+      </div>
+
+      {/* Mobile Carousel View */}
+      <div className="lg:hidden max-w-6xl mx-auto px-3">
+        <div className="relative">
+          {/* Navigation Arrows - Conditionally hidden */}
+          <button
+            onClick={prevCard}
+            className={`absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/70 hover:bg-black/90 text-white rounded-full p-2 transition-all duration-200 ${
+              currentCard === 0 ? 'opacity-40 cursor-not-allowed' : ''
+            }`}
+            disabled={currentCard === 0}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <button
+            onClick={nextCard}
+            className={`absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/70 hover:bg-black/90 text-white rounded-full p-2 transition-all duration-200 ${
+              currentCard === cards.length - 1 ? 'opacity-40 cursor-not-allowed' : ''
+            }`}
+            disabled={currentCard === cards.length - 1}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Carousel Container with perfect spacing */}
+          <motion.div
+            className="overflow-hidden py-5"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            onDragEnd={handleDragEnd}
+          >
+            <motion.div
+              className="flex"
+              animate={{ x: `-${currentCard * 100}%` }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            >
+              {cards.map((card, index) => (
+                <div key={card.id} className="w-full flex-shrink-0 px-2">
+                  <div className={index === 1 ? "" : ""}>
+                    {card.content}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center mt-6 space-x-3">
+            {cards.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentCard(index)}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-200 ${
+                  index === currentCard ? 'bg-yellow-500' : 'bg-gray-500'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </motion.div>

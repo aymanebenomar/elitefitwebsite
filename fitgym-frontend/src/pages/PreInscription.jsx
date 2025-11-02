@@ -37,26 +37,26 @@ const Preinscription = () => {
           transition={{ duration: 0.7 }}
           className="space-y-6 text-left relative flex flex-col justify-center"
         >
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 justify-center md:justify-start">
             <Dumbbell className="text-red-600 w-8 h-8" />
-            <h2 className="text-3xl font-bold uppercase text-red-600 italic">
-              Rejoins <span className="text-white">ELITE CLUB</span>
+            <h2 className="text-3xl font-bold uppercase text-red-600">
+              REJOINS <span className="text-white">ELITE CLUB</span>
             </h2>
           </div>
 
-          <p className="text-gray-300 leading-relaxed italic text-sm md:text-base">
+          <p className="text-gray-300 leading-relaxed text-sm md:text-base text-center md:text-left">
             Transforme ton corps, ton mental et ton énergie avec{" "}
             <span className="text-red-500 font-semibold">ELITE CLUB</span>.  
-            Nos coachs experts t’accompagneront pour atteindre tes objectifs plus vite que jamais.
+            Nos coachs experts t'accompagneront pour atteindre tes objectifs plus vite que jamais.
           </p>
 
           {/* Middle motivational quote */}
-          <p className="text-gray-400 italic text-center text-sm md:text-base mt-2">
+          <p className="text-gray-400 text-center md:text-left text-sm md:text-base mt-2">
             "Chaque entraînement est un pas vers une meilleure version de toi-même."
           </p>
 
           {/* Gym name at bottom left */}
-          <span className="absolute bottom-2 left-2 text-gray-400 text-sm italic">
+          <span className="absolute bottom-2 left-2 text-gray-400 text-sm hidden md:block">
             ELITE CLUB
           </span>
         </motion.div>
@@ -69,70 +69,106 @@ const Preinscription = () => {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="bg-black/40 p-6 md:p-8 rounded-2xl border border-gray-700 shadow-xl backdrop-blur-md grid grid-cols-1 gap-4"
         >
-          <h3 className="text-2xl font-bold uppercase mb-4 text-center text-red-500 italic">
-            Préinscription
+          <h3 className="text-2xl font-bold uppercase mb-4 text-center text-red-500">
+            PRÉINSCRIPTION
           </h3>
 
-          <ul className="space-y-3">
-            <li>
+          <div className="space-y-4">
+            <div>
               <input
                 type="text"
                 placeholder="Nom complet"
                 required
-                className="bg-gray-800 bg-opacity-70 text-white px-4 py-2 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm"
+                className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm"
               />
-            </li>
+            </div>
 
-            <li>
+            <div>
               <input
                 type="tel"
                 placeholder="Numéro de téléphone"
                 required
-                className="bg-gray-800 bg-opacity-70 text-white px-4 py-2 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm"
+                className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm"
               />
-            </li>
+            </div>
 
-            <li>
+            <div>
               <input
                 type="email"
                 placeholder="Adresse e-mail"
                 required
-                className="bg-gray-800 bg-opacity-70 text-white px-4 py-2 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm"
+                className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm"
               />
-            </li>
+            </div>
 
-            <li>
+            <div>
               <select
                 defaultValue="Bodybuilding"
-                className="bg-gray-800 bg-opacity-70 text-white px-4 py-2 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm appearance-none"
+                className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm appearance-none"
               >
                 <option value="Bodybuilding">Bodybuilding</option>
                 <option value="Kids">Kids</option>
                 <option value="Crossfit">Crossfit</option>
               </select>
-            </li>
+            </div>
 
-            <li className="flex items-center gap-2">
+            <div className="flex items-start gap-3 pt-2">
               <input
                 type="checkbox"
                 checked={consent}
                 onChange={(e) => setConsent(e.target.checked)}
-                className="w-4 h-4 text-red-600 bg-gray-800 border-gray-600 rounded focus:ring-2 focus:ring-red-600"
+                className="w-5 h-5 text-red-600 bg-gray-800 border-gray-600 rounded focus:ring-2 focus:ring-red-600 mt-1 flex-shrink-0"
               />
-              <span className="text-gray-300 text-xs italic">
+              <span className="text-gray-300 text-xs leading-relaxed">
                 J'accepte que mes informations soient utilisées pour la préinscription.
               </span>
-            </li>
-          </ul>
+            </div>
+          </div>
 
           <button
             type="submit"
-            className="mt-3 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-md transition-all duration-200 hover:shadow-md w-full text-sm"
+            className="mt-4 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-md transition-all duration-200 hover:shadow-md w-full text-sm"
           >
             Envoyer la demande
           </button>
         </motion.form>
       </div>
+
+      {/* Mobile-specific styles */}
+      <style>
+        {`
+          @media (max-width: 768px) {
+            .grid {
+              display: flex;
+              flex-direction: column;
+              gap: 24px !important;
+              padding: 20px !important;
+            }
+
+            .grid > * {
+              width: 100%;
+            }
+
+            form {
+              width: 100%;
+              padding: 20px !important;
+              margin: 0 auto;
+            }
+
+            input, select, button {
+              font-size: 16px; /* Prevents zoom on iOS */
+            }
+
+            input, select {
+              padding: 12px 16px !important;
+            }
+
+            button {
+              padding: 14px !important;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };
