@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logoImg from "../assets/eliteblacklogo.png";
+import logoImg from "../assets/loooooogoooo-removebg-preview.png";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
