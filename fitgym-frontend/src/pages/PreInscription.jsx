@@ -2,22 +2,62 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import bgImg from "../assets/all.png";
 import { Dumbbell } from "lucide-react";
+import { supabase } from "../supabaseClient"; // Make sure this file exists and is correct
 
 const Preinscription = () => {
+  const [fullName, setFullName] = useState("");
+  const [numTele, setNumTele] = useState("");
+  const [email, setEmail] = useState("");
+  const [offre, setOffre] = useState("Bodybuilding");
   const [consent, setConsent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Form submitted");
+
     if (!consent) {
       alert("Veuillez accepter les conditions pour soumettre le formulaire.");
       return;
     }
-    alert("Formulaire soumis avec succès !");
+
+    setLoading(true);
+
+    try {
+      const { data, error } = await supabase.from("preinscriptions").insert([
+        {
+          full_name: fullName,
+          num_tele: numTele,
+          email: email,
+          offre: offre,
+          consent: consent,
+        },
+      ]);
+
+      console.log("Supabase data:", data);
+      console.log("Supabase error:", error);
+
+      if (error) {
+        alert("Erreur lors de l'enregistrement : " + error.message);
+      } else {
+        alert("Formulaire soumis avec succès !");
+        setFullName("");
+        setNumTele("");
+        setEmail("");
+        setOffre("Bodybuilding");
+        setConsent(false);
+      }
+    } catch (err) {
+      console.error("Unexpected error:", err);
+      alert("Une erreur inattendue s'est produite !");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="relative w-full min-h-screen flex items-center justify-center py-16 bg-black">
-      {/* Background Image with Top Vignette */}
+      {/* Background Image */}
       <div
         className="absolute inset-0 bg-center bg-cover bg-no-repeat"
         style={{
@@ -50,12 +90,10 @@ const Preinscription = () => {
             Nos coachs experts t'accompagneront pour atteindre tes objectifs plus vite que jamais.
           </p>
 
-          {/* Middle motivational quote */}
           <p className="text-gray-400 text-center md:text-left text-sm md:text-base mt-2">
             "Chaque entraînement est un pas vers une meilleure version de toi-même."
           </p>
 
-          {/* Gym name at bottom left */}
           <span className="absolute bottom-2 left-2 text-gray-400 text-sm hidden md:block">
             ELITE CLUB
           </span>
@@ -74,43 +112,42 @@ const Preinscription = () => {
           </h3>
 
           <div className="space-y-4">
-            <div>
-              <input
-                type="text"
-                placeholder="Nom complet"
-                required
-                className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm"
-              />
-            </div>
+            <input
+              type="text"
+              placeholder="Nom complet"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              required
+              className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm"
+            />
 
-            <div>
-              <input
-                type="tel"
-                placeholder="Numéro de téléphone"
-                required
-                className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm"
-              />
-            </div>
+            <input
+              type="tel"
+              placeholder="Numéro de téléphone"
+              value={numTele}
+              onChange={(e) => setNumTele(e.target.value)}
+              required
+              className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm"
+            />
 
-            <div>
-              <input
-                type="email"
-                placeholder="Adresse e-mail"
-                required
-                className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm"
-              />
-            </div>
+            <input
+              type="email"
+              placeholder="Adresse e-mail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm"
+            />
 
-            <div>
-              <select
-                defaultValue="Bodybuilding"
-                className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm appearance-none"
-              >
-                <option value="Bodybuilding">Bodybuilding</option>
-                <option value="Kids">Kids</option>
-                <option value="Crossfit">Crossfit</option>
-              </select>
-            </div>
+            <select
+              value={offre}
+              onChange={(e) => setOffre(e.target.value)}
+              className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm appearance-none"
+            >
+              <option value="Bodybuilding">Bodybuilding</option>
+              <option value="Kids">Kids</option>
+              <option value="Crossfit">Crossfit</option>
+            </select>
 
             <div className="flex items-start gap-3 pt-2">
               <input
@@ -127,48 +164,15 @@ const Preinscription = () => {
 
           <button
             type="submit"
-            className="mt-4 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-md transition-all duration-200 hover:shadow-md w-full text-sm"
+            disabled={loading}
+            className={`mt-4 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-md transition-all duration-200 hover:shadow-md w-full text-sm ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            Envoyer la demande
+            {loading ? "Envoi..." : "Envoyer la demande"}
           </button>
         </motion.form>
       </div>
-
-      {/* Mobile-specific styles */}
-      <style>
-        {`
-          @media (max-width: 768px) {
-            .grid {
-              display: flex;
-              flex-direction: column;
-              gap: 24px !important;
-              padding: 20px !important;
-            }
-
-            .grid > * {
-              width: 100%;
-            }
-
-            form {
-              width: 100%;
-              padding: 20px !important;
-              margin: 0 auto;
-            }
-
-            input, select, button {
-              font-size: 16px; /* Prevents zoom on iOS */
-            }
-
-            input, select {
-              padding: 12px 16px !important;
-            }
-
-            button {
-              padding: 14px !important;
-            }
-          }
-        `}
-      </style>
     </div>
   );
 };
