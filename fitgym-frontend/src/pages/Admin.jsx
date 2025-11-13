@@ -16,7 +16,9 @@ const Admin = () => {
   // Check admin session
   useEffect(() => {
     const checkAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
 
       if (!session) {
         navigate("/login");
@@ -103,13 +105,46 @@ const Admin = () => {
   };
 
   if (!authorized)
-    return <div style={{ padding: '2rem', textAlign: 'center', color: '#9ca3af' }}>Checking authorization...</div>;
-  if (loading) return <div style={{ padding: '2rem', textAlign: 'center', color: 'white' }}>Loading...</div>;
-  if (errorMsg) return <div style={{ padding: '2rem', textAlign: 'center', color: '#ef4444' }}>{errorMsg}</div>;
+    return (
+      <div
+        style={{
+          padding: "2rem",
+          textAlign: "center",
+          color: "#9ca3af",
+        }}
+      >
+        Checking authorization...
+      </div>
+    );
+  if (loading)
+    return (
+      <div style={{ padding: "2rem", textAlign: "center", color: "white" }}>
+        Loading...
+      </div>
+    );
+  if (errorMsg)
+    return (
+      <div
+        style={{
+          padding: "2rem",
+          textAlign: "center",
+          color: "#ef4444",
+        }}
+      >
+        {errorMsg}
+      </div>
+    );
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', backgroundColor: 'black', color: 'white' }}>
-      {/* Add CSS styles */}
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        backgroundColor: "black",
+        color: "white",
+      }}
+    >
+      {/* CSS */}
       <style>
         {`
           .status-select {
@@ -121,82 +156,76 @@ const Admin = () => {
             background-color: #1f2937;
             color: white;
           }
-          .status-fixed {
-            background-color: #065f46;
-            color: white;
-          }
-          .status-rejected {
-            background-color: #7f1d1d;
-            color: white;
-          }
-          .status-new-client {
-            background-color: #1e3a8a;
-            color: white;
-          }
-          .status-not-responding {
-            background-color: #78350f;
-            color: white;
-          }
+          .status-fixed { background-color: #065f46; color: white; }
+          .status-rejected { background-color: #7f1d1d; color: white; }
+          .status-new-client { background-color: #1e3a8a; color: white; }
+          .status-not-responding { background-color: #78350f; color: white; }
         `}
       </style>
 
       {/* Sidebar */}
-      <aside style={{ width: '16rem', backgroundColor: '#111827', padding: '1.5rem', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}>
-        <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1.5rem' }}>Dashboard</h2>
-        <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          {["All", "Today", "Bodybuilding", "Kids", "Crossfit", ...statuses].map((status) => (
-            <button
-              key={status}
-              onClick={() => handleFilterChange(status)}
-              style={{
-                textAlign: 'left',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                fontWeight: '500',
-                transition: 'all 0.2s',
-                backgroundColor: activeFilter === status ? '#dc2626' : 'transparent',
-                color: activeFilter === status ? 'white' : '#d1d5db',
-                border: 'none',
-                cursor: 'pointer'
-              }}
-              onMouseOver={(e) => {
-                if (activeFilter !== status) {
-                  e.target.style.backgroundColor = '#374151';
-                }
-              }}
-              onMouseOut={(e) => {
-                if (activeFilter !== status) {
-                  e.target.style.backgroundColor = 'transparent';
-                }
-              }}
-            >
-              {status}
-            </button>
-          ))}
+      <aside
+        style={{
+          width: "16rem",
+          backgroundColor: "#111827",
+          padding: "1.5rem",
+          boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <h2 style={{ fontSize: "1.5rem", fontWeight: "bold", marginBottom: "1.5rem" }}>
+          Dashboard
+        </h2>
+        <nav style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+          {["All", "Today", "Bodybuilding", "Kids", "Crossfit", ...statuses].map(
+            (status) => (
+              <button
+                key={status}
+                onClick={() => handleFilterChange(status)}
+                style={{
+                  textAlign: "left",
+                  padding: "0.5rem 1rem",
+                  borderRadius: "0.5rem",
+                  fontWeight: "500",
+                  transition: "all 0.2s",
+                  backgroundColor:
+                    activeFilter === status ? "#dc2626" : "transparent",
+                  color: activeFilter === status ? "white" : "#d1d5db",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                {status}
+              </button>
+            )
+          )}
         </nav>
         <button
           onClick={handleLogout}
           style={{
-            marginTop: '2rem',
-            backgroundColor: '#dc2626',
-            color: 'white',
-            padding: '0.5rem 1rem',
-            borderRadius: '0.5rem',
-            width: '100%',
-            border: 'none',
-            cursor: 'pointer',
-            fontWeight: '500'
+            marginTop: "2rem",
+            backgroundColor: "#dc2626",
+            color: "white",
+            padding: "0.5rem 1rem",
+            borderRadius: "0.5rem",
+            width: "100%",
+            border: "none",
+            cursor: "pointer",
+            fontWeight: "500",
           }}
-          onMouseOver={(e) => e.target.style.backgroundColor = '#b91c1c'}
-          onMouseOut={(e) => e.target.style.backgroundColor = '#dc2626'}
         >
           Logout
         </button>
       </aside>
 
-      {/* Main content */}
-      <main style={{ flex: 1, padding: '2.5rem' }}>
-        <h1 style={{ fontSize: '1.875rem', fontWeight: 'bold', marginBottom: '2rem' }}>
+      {/* Main Content */}
+      <main style={{ flex: 1, padding: "2.5rem" }}>
+        <h1
+          style={{
+            fontSize: "1.875rem",
+            fontWeight: "bold",
+            marginBottom: "2rem",
+          }}
+        >
           {activeFilter === "All"
             ? "All Preinscriptions"
             : activeFilter === "Today"
@@ -205,40 +234,67 @@ const Admin = () => {
         </h1>
 
         {filteredData.length === 0 ? (
-          <p style={{ color: '#9ca3af', textAlign: 'center', fontSize: '1.125rem', marginTop: '2.5rem' }}>No data found.</p>
+          <p
+            style={{
+              color: "#9ca3af",
+              textAlign: "center",
+              fontSize: "1.125rem",
+              marginTop: "2.5rem",
+            }}
+          >
+            No data found.
+          </p>
         ) : (
-          <div style={{ overflowX: 'auto', borderRadius: '0.5rem', backgroundColor: '#111827' }}>
-            <table style={{ width: '100%', borderCollapse: 'separate', borderSpacing: 0 }}>
-              <thead style={{ backgroundColor: '#1f2937' }}>
+          <div
+            style={{
+              overflowX: "auto",
+              borderRadius: "0.5rem",
+              backgroundColor: "#111827",
+            }}
+          >
+            <table
+              style={{ width: "100%", borderCollapse: "separate", borderSpacing: 0 }}
+            >
+              <thead style={{ backgroundColor: "#1f2937" }}>
                 <tr>
-                  <th style={{ padding: '0.75rem 1.5rem', textAlign: 'left', fontWeight: '500', borderBottom: '1px solid #374151' }}>Full Name</th>
-                  <th style={{ padding: '0.75rem 1.5rem', textAlign: 'left', fontWeight: '500', borderBottom: '1px solid #374151' }}>Phone</th>
-                  <th style={{ padding: '0.75rem 1.5rem', textAlign: 'left', fontWeight: '500', borderBottom: '1px solid #374151' }}>Email</th>
-                  <th style={{ padding: '0.75rem 1.5rem', textAlign: 'left', fontWeight: '500', borderBottom: '1px solid #374151' }}>Offer</th>
-                  <th style={{ padding: '0.75rem 1.5rem', textAlign: 'left', fontWeight: '500', borderBottom: '1px solid #374151' }}>Consent</th>
-                  <th style={{ padding: '0.75rem 1.5rem', textAlign: 'left', fontWeight: '500', borderBottom: '1px solid #374151' }}>Status</th>
+                  <th style={thStyle}>Full Name</th>
+                  <th style={thStyle}>Phone</th>
+                  <th style={thStyle}>Email</th>
+                  <th style={thStyle}>Adulte / Kids</th>
+                  <th style={thStyle}>Status</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredData.map((row) => {
                   const statusValue = row.status ?? "New Client";
-                  const statusClass = `status-${statusValue.toLowerCase().replace(' ', '-')}`;
-                  
+                  const statusClass = `status-${statusValue
+                    .toLowerCase()
+                    .replace(" ", "-")}`;
+
+                  // Combine adult and kids selections
+                  let offerDisplay = row.offre || "-";
+                  if (row.section_enfant) {
+                    offerDisplay += " / " + row.section_enfant;
+                  }
+
                   return (
-                    <tr key={row.id} style={{ borderBottom: '1px solid #374151' }}>
-                      <td style={{ padding: '1rem 1.5rem' }}>{row.full_name}</td>
-                      <td style={{ padding: '1rem 1.5rem' }}>{row.num_tele}</td>
-                      <td style={{ padding: '1rem 1.5rem' }}>{row.email}</td>
-                      <td style={{ padding: '1rem 1.5rem' }}>{row.offre}</td>
-                      <td style={{ padding: '1rem 1.5rem' }}>{row.consent ? "✅" : "❌"}</td>
-                      <td style={{ padding: '1rem 1.5rem' }}>
+                    <tr key={row.id} style={{ borderBottom: "1px solid #374151" }}>
+                      <td style={tdStyle}>{row.full_name}</td>
+                      <td style={tdStyle}>{row.num_tele}</td>
+                      <td style={tdStyle}>{row.email}</td>
+                      <td style={tdStyle}>{offerDisplay}</td>
+                      <td style={tdStyle}>
                         <select
                           value={statusValue}
-                          onChange={(e) => handleStatusUpdate(row.id, e.target.value)}
+                          onChange={(e) =>
+                            handleStatusUpdate(row.id, e.target.value)
+                          }
                           className={`status-select ${statusClass}`}
                         >
                           {statuses.map((s) => (
-                            <option key={s} value={s}>{s}</option>
+                            <option key={s} value={s}>
+                              {s}
+                            </option>
                           ))}
                         </select>
                       </td>
@@ -253,5 +309,14 @@ const Admin = () => {
     </div>
   );
 };
+
+// Styles
+const thStyle = {
+  padding: "0.75rem 1.5rem",
+  textAlign: "left",
+  fontWeight: "500",
+  borderBottom: "1px solid #374151",
+};
+const tdStyle = { padding: "1rem 1.5rem" };
 
 export default Admin;

@@ -2,22 +2,28 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import bgImg from "../assets/all.png";
 import { Dumbbell } from "lucide-react";
-import { supabase } from "../supabaseClient"; // Make sure this file exists and is correct
+import { supabase } from "../supabaseClient"; // Ensure this file exists and is correctly configured
 
 const Preinscription = () => {
   const [fullName, setFullName] = useState("");
   const [numTele, setNumTele] = useState("");
   const [email, setEmail] = useState("");
-  const [offre, setOffre] = useState("Bodybuilding");
+  const [offre, setOffre] = useState("");
+  const [sectionEnfant, setSectionEnfant] = useState("");
   const [consent, setConsent] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted");
 
     if (!consent) {
       alert("Veuillez accepter les conditions pour soumettre le formulaire.");
+      return;
+    }
+
+    // Must choose at least one (Adult OR Kids)
+    if (!offre && !sectionEnfant) {
+      alert("Veuillez choisir un plan adulte ou une section enfants avant de soumettre le formulaire.");
       return;
     }
 
@@ -29,13 +35,11 @@ const Preinscription = () => {
           full_name: fullName,
           num_tele: numTele,
           email: email,
-          offre: offre,
+          offre: offre || null,
+          section_enfant: sectionEnfant || null,
           consent: consent,
         },
       ]);
-
-      console.log("Supabase data:", data);
-      console.log("Supabase error:", error);
 
       if (error) {
         alert("Erreur lors de l'enregistrement : " + error.message);
@@ -44,7 +48,8 @@ const Preinscription = () => {
         setFullName("");
         setNumTele("");
         setEmail("");
-        setOffre("Bodybuilding");
+        setOffre("");
+        setSectionEnfant("");
         setConsent(false);
       }
     } catch (err) {
@@ -139,15 +144,38 @@ const Preinscription = () => {
               className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm"
             />
 
-            <select
-              value={offre}
-              onChange={(e) => setOffre(e.target.value)}
-              className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm appearance-none"
-            >
-              <option value="Bodybuilding">Bodybuilding</option>
-              <option value="Kids">Kids</option>
-              <option value="Crossfit">Crossfit</option>
-            </select>
+            {/* Offre Section */}
+            <div className="space-y-2">
+              <p className="text-gray-400 text-sm font-medium">Adults :</p>
+              <select
+                value={offre}
+                onChange={(e) => setOffre(e.target.value)}
+                className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm appearance-none"
+              >
+                <option value="" disabled>
+                  -- Choisis --
+                </option>
+                <option value="Bodybuilding">Bodybuilding</option>
+                <option value="Crossfit">Crossfit</option>
+              </select>
+            </div>
+
+            {/* Kids Section */}
+            <div className="space-y-2">
+              <p className="text-gray-400 text-sm font-medium">Section Enfants :</p>
+              <select
+                value={sectionEnfant}
+                onChange={(e) => setSectionEnfant(e.target.value)}
+                className="bg-gray-800 bg-opacity-70 text-white px-4 py-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-red-600 text-sm appearance-none"
+              >
+                <option value="" disabled>
+                  -- Choisis --
+                </option>
+                <option value="Taekwondo">Taekwondo</option>
+                <option value="Judo">Judo</option>
+                <option value="Crossfit Kids">Crossfit Kids</option>
+              </select>
+            </div>
 
             <div className="flex items-start gap-3 pt-2">
               <input
