@@ -1,12 +1,20 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom"; // <-- import Routes and Route
+import { Routes, Route } from "react-router-dom";
+
+// Existing imports
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import OurClub from "./pages/OurClub";
 import Preinscription from "./pages/PreInscription";
 import Footer from "./components/Footer";
-import Admin from "./pages/Admin"; // <-- import Admin page
-import Login from "./pages/Login"; // <-- import Login page
+import Admin from "./pages/Admin";
+import Login from "./pages/Login";
+
+// New pages
+import ModernEquipment from "./pages/ModernEquipment";
+import PersonalCoaching from "./pages/PersonalCoaching";
+import Community from "./pages/Community";
+import TournamentDetail from "./pages/TournamentDetail"; // <-- new page
 
 export default function App() {
   return (
@@ -37,10 +45,18 @@ export default function App() {
         }
       />
 
-      {/* Admin page */}
+      {/* New Concept Pages */}
+      <Route path="/modern-equipment" element={<ModernEquipment />} />
+      <Route path="/personal-coaching" element={<PersonalCoaching />} />
+      <Route path="/community" element={<Community />} />
+
+      {/* Tournament detail page */}
+      <Route path="/tournament/:id" element={<TournamentDetail />} />
+
+      {/* Admin */}
       <Route path="/admin" element={<Admin />} />
 
-      {/* Login page */}
+      {/* Login */}
       <Route path="/login" element={<Login />} />
     </Routes>
   );
