@@ -7,6 +7,7 @@ import Activities from "../pages/Activities";
 import Blog from "../pages/Blog";
 import PreInscription from "../pages/PreInscription";
 import ModernEquipment from "../pages/ModernEquipment";
+import PersonalCoaching from "../pages/PersonalCoaching";
 import MainLayout from "../layouts/MainLayout";
 
 export default function AppRouter() {
@@ -20,6 +21,7 @@ export default function AppRouter() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/preinscription" element={<PreInscription />} />
         <Route path="/modern-equipment" element={<MainLayout><ModernEquipment /></MainLayout>} />
+        <Route path="/personal-coaching" element={<MainLayout><PersonalCoaching /></MainLayout>} />
       </Route>
     </Routes>
   );
