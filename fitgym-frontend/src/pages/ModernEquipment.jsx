@@ -19,27 +19,27 @@ export default function ModernEquipment() {
     {
       icon: Zap,
       name: "Cardio",
-      description: "State-of-the-art machines to get your heart pumping.",
+      description: "Des machines à la pointe de la technologie pour faire battre votre cœur.",
     },
     {
       icon: Dumbbell,
-      name: "Strength",
-      description: "Build muscle with our wide range of weights and resistance machines.",
+      name: "Force",
+      description: "Développez vos muscles avec notre large gamme d'haltères et de machines de résistance.",
     },
     {
       icon: Repeat,
-      name: "Functional",
-      description: "Improve your real-world fitness with our functional training gear.",
+      name: "Fonctional",
+      description: "Améliorez votre forme physique au quotidien avec notre équipement d'entraînement fonctionnel.",
     },
   ];
 
   const equipmentList = [
-    { name: "TechnoGym Treadmills", image: equip1, category: "Cardio" },
-    { name: "Life Fitness Ellipticals", image: equip2, category: "Cardio" },
-    { name: "Hammer Strength Racks", image: equip3, category: "Strength" },
-    { name: "Free Weights Zone", image: equip4, category: "Strength" },
-    { name: "Kettlebell Sets", image: equip5, category: "Functional" },
-    { name: "TRX Suspension Trainers", image: equip6, category: "Functional" },
+    { name: "TechnoGym Tapis de course", image: equip1, category: "Cardio" },
+    { name: "Life Fitness Elliptiques", image: equip2, category: "Cardio" },
+    { name: "Hammer Strength Racks", image: equip3, category: "Force" },
+    { name: "Zone de poids libres", image: equip4, category: "Force" },
+    { name: "Ensembles de kettlebell", image: equip5, category: "Fonctional" },
+    { name: "Entraîneurs de suspension TRX", image: equip6, category: "Fonctional" },
   ];
 
   const services = ["BODYBUILDING", "CROSSFIT", "TAEKWONDO", "JUDO", "CROSSFIT KIDS"];
@@ -70,7 +70,7 @@ export default function ModernEquipment() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto"
           >
-            Train with the best. Our gym is equipped with state-of-the-art machines to help you achieve your fitness goals.
+            Entraînez-vous avec les meilleurs. Notre salle de sport est équipée de machines de pointe pour vous aider à atteindre vos objectifs de remise en forme.
           </motion.p>
         </div>
       </section>
@@ -85,7 +85,7 @@ export default function ModernEquipment() {
             transition={{ duration: 0.6 }}
             className="text-3xl md:text-5xl font-bold text-red-700 mb-8 tracking-tight leading-tight"
           >
-            TOP-TIER FITNESS TECHNOLOGY
+            TECHNOLOGIE DE FITNESS DE HAUT NIVEAU
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -94,7 +94,7 @@ export default function ModernEquipment() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-gray-300 max-w-3xl mx-auto md:text-lg leading-relaxed"
           >
-            We invest in the latest and most effective fitness equipment from world-class brands to ensure you have the best possible workout experience. Explore our range of machines and tools.
+            Nous investissons dans les équipements de fitness les plus récents et les plus efficaces de marques de classe mondiale pour vous garantir la meilleure expérience d'entraînement possible. Découvrez notre gamme de machines et d'outils.
           </motion.p>
         </div>
       </section>
@@ -166,10 +166,10 @@ export default function ModernEquipment() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
-              OUR ARSENAL
+              NOTRE ARSENAL
             </h2>
             <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-              A glimpse into the tools that will power your transformation.
+              Un aperçu des outils qui alimenteront votre transformation.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
