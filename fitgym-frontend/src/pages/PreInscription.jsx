@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import bgImg from "../assets/all.png";
 import { Dumbbell } from "lucide-react";
-import { supabase } from "../supabaseClient"; // Ensure this file exists and is correctly configured
+import { supabase } from "../supabaseClient";
 
 const Preinscription = () => {
   const [fullName, setFullName] = useState("");
@@ -162,7 +162,7 @@ const Preinscription = () => {
 
             {/* Kids Section */}
             <div className="space-y-2">
-              <p className="text-gray-400 text-sm font-medium">Section Enfants :</p>
+              <p className="text-gray-400 text-sm font-medium">Enfants :</p>
               <select
                 value={sectionEnfant}
                 onChange={(e) => setSectionEnfant(e.target.value)}
