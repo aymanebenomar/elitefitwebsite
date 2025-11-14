@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ArrowRight } from "lucide-react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import iconUrl from "leaflet/dist/images/marker-icon.png";
 import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
@@ -20,6 +22,7 @@ L.Marker.prototype.options.icon = L.icon({
 });
 
 const OurClub = () => {
+  const navigate = useNavigate();
   const position = [33.880557, -5.563053]; // Meknès coordinates
 
   return (
@@ -100,6 +103,16 @@ const OurClub = () => {
           >
             Voir sur Google Maps
           </motion.a>
+
+          <motion.button
+            onClick={() => navigate("/modern-equipment")}
+            className="inline-flex items-center gap-2 mt-4 px-8 py-3 bg-transparent border-2 border-red-600 hover:bg-red-600 rounded-full text-white font-semibold tracking-wide transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Découvrir Notre Club
+            <ArrowRight className="w-5 h-5" />
+          </motion.button>
         </div>
 
         {/* Map */}
