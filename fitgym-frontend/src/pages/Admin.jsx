@@ -186,7 +186,7 @@ const Admin = () => {
                   <th className="py-3 px-4 text-left">Full Name</th>
                   <th className="py-3 px-4 text-left">Phone</th>
                   <th className="py-3 px-4 text-left">Email</th>
-                  <th className="py-3 px-4 text-left">/ Kids</th>
+                  <th className="py-3 px-4 text-left">Adults / Kids</th>
                   <th className="py-3 px-4 text-left">Status</th>
                 </tr>
               </thead>

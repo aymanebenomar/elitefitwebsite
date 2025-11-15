@@ -19,11 +19,14 @@ const Navbar = () => {
   const scrollToSection = (sectionId) => {
     const doScroll = () => {
       const section = document.getElementById(sectionId);
-      if (!section) return; // prevent crash if section not found
+      if (!section) return;
 
       const navbarHeight = navbarRef.current?.offsetHeight || 90;
       const offset = sectionId === "abonnements" ? 20 : -80;
-      const yOffset = section.getBoundingClientRect().top + window.scrollY - (navbarHeight + offset);
+      const yOffset =
+        section.getBoundingClientRect().top +
+        window.scrollY -
+        (navbarHeight + offset);
 
       window.scrollTo({ top: yOffset, behavior: "smooth" });
       setMenuOpen(false);
@@ -42,6 +45,7 @@ const Navbar = () => {
     { id: "abonnements", label: "Abonnements", isSection: true },
     { id: "clubs", label: "Club", isSection: true },
     { id: "preinscription", label: "Pré-inscription", isSection: true },
+    { path: "/nos-groupes", label: "Nos Groupes", isSection: false },
   ];
 
   return (
@@ -52,14 +56,19 @@ const Navbar = () => {
       rounded-xl z-50`}
     >
       <div className="flex items-center justify-between max-w-7xl mx-auto">
-        <Link to="/" onClick={() => scrollToSection("hero")} className="flex items-center gap-3 cursor-pointer">
+        <Link
+          to="/"
+          onClick={() => scrollToSection("hero")}
+          className="flex items-center gap-3 cursor-pointer"
+        >
           <img src={logoImg} alt="logo" className="w-10 h-10" />
         </Link>
 
+        {/* Desktop Navigation */}
         <nav className="hidden md:block">
           <ul className={`flex items-center ${scrolled ? "gap-4" : "gap-6"} text-white`}>
             {navLinks.map((link) => (
-              <li key={link.id} className="cursor-pointer">
+              <li key={link.label} className="cursor-pointer">
                 {link.isSection ? (
                   <button
                     onClick={() => scrollToSection(link.id)}
@@ -80,7 +89,7 @@ const Navbar = () => {
           </ul>
         </nav>
 
-        {/* Contact button fixed to scroll to preinscription */}
+        {/* Desktop Contact Button */}
         <button
           onClick={() => scrollToSection("preinscription")}
           className={`hidden md:flex bg-eliteGold hover:bg-yellow-500 text-eliteBlack font-bold rounded transition-all duration-500 
@@ -89,31 +98,43 @@ const Navbar = () => {
           Contact
         </button>
 
+        {/* Mobile Menu Button */}
         <button className="md:hidden text-white" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Dropdown */}
       <div
         className="md:hidden bg-eliteBlack/90 backdrop-blur-md rounded-xl shadow-lg overflow-hidden transition-all duration-500"
         style={{
-          maxHeight: menuOpen ? '24rem' : '0',
+          maxHeight: menuOpen ? "24rem" : "0",
           opacity: menuOpen ? 1 : 0,
-          marginTop: menuOpen ? '0.75rem' : '0'
+          marginTop: menuOpen ? "0.75rem" : "0",
         }}
       >
         <ul className="flex flex-col items-center gap-4 text-white px-6 py-4">
           {navLinks.map((link) => (
-            <li key={link.id}>
-              <button
-                onClick={() => scrollToSection(link.id)}
-                className="hover:text-eliteGold transition-colors duration-300"
-              >
-                {link.label}
-              </button>
+            <li key={link.label}>
+              {link.isSection ? (
+                <button
+                  onClick={() => scrollToSection(link.id)}
+                  className="hover:text-eliteGold transition-colors duration-300"
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <Link
+                  to={link.path}
+                  onClick={() => setMenuOpen(false)}
+                  className="hover:text-eliteGold transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+              )}
             </li>
           ))}
+
           <li>
             <button
               onClick={() => scrollToSection("preinscription")}
