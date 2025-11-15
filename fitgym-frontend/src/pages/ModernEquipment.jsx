@@ -4,9 +4,9 @@ import { Dumbbell, Zap, Repeat } from 'lucide-react';
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import heroImage from "../assets/all2.png";
+import heroImage from "../assets/all.png";
 
-// Re-using existing assets for equipment gallery
+
 import equip1 from "../assets/all.png";
 import equip2 from "../assets/all2.png";
 import equip3 from "../assets/all3.jpg";
