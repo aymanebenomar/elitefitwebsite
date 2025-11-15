@@ -15,7 +15,8 @@ import ModernEquipment from "./pages/ModernEquipment";
 import PersonalCoaching from "./pages/PersonalCoaching";
 import AboutUs from "./pages/AboutUs";
 import Community from "./pages/Community";
-import TournamentDetail from "./pages/TournamentDetail"; // <-- new page
+import TournamentDetail from "./pages/TournamentDetail";
+import NosGroupes from "./pages/Nosgroupes";
 
 export default function App() {
   return (
@@ -51,6 +52,9 @@ export default function App() {
       <Route path="/personal-coaching" element={<PersonalCoaching />} />
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/community" element={<Community />} />
+
+      {/* New groupes page */}
+      <Route path="/nos-groupes" element={<NosGroupes />} />
 
       {/* Tournament detail page */}
       <Route path="/tournament/:id" element={<TournamentDetail />} />
