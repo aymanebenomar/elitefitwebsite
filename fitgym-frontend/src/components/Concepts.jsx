@@ -48,6 +48,7 @@ export default function Concepts() {
       className="py-16 md:py-20 bg-gradient-to-b from-black to-gray-900 scroll-mt-32"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
+
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
@@ -81,9 +82,9 @@ export default function Concepts() {
                   <img
                     src={concept.image}
                     alt={concept.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 </div>
               </div>
 
@@ -101,34 +102,32 @@ export default function Concepts() {
                   {concept.stats.map((s, i) => (
                     <div
                       key={i}
-                      className="p-3 bg-gray-800/50 rounded-xl border border-gray-700 text-center"
+                      className="p-3 bg-gray-800/50 rounded-xl border border-gray-700 text-center text-sm text-gray-300"
                     >
-                      <span className="text-sm text-gray-300">{s}</span>
+                      {s}
                     </div>
                   ))}
                 </div>
 
                 <div className="pt-4">
                   <h4 className="text-lg font-bold text-white">POINTS FORTS</h4>
-                  <div className="space-y-3 mt-3">
+                  <div className="space-y-2 mt-3">
                     {concept.features.map((f, i) => (
-                      <div key={i} className="flex items-center gap-3">
+                      <div key={i} className="flex items-center gap-2">
                         <CheckCircle className="w-5 h-5 text-green-500" />
-                        <span className="text-gray-300 text-sm italic">
-                          {f}
-                        </span>
+                        <span className="text-gray-300 text-sm italic">{f}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* MINI BUTTON LINK */}
+                {/* MINIMAL BUTTON */}
                 <div className="pt-6">
                   <Link
                     to={concept.path}
-                    className="inline-block px-4 py-2 bg-eliteGold text-black font-semibold rounded hover:bg-yellow-500 transition-colors duration-300 text-sm"
+                    className="inline-block px-6 py-2 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-500 transition-all duration-300"
                   >
-                    En savoir plus
+                    Découvrir Plus
                   </Link>
                 </div>
               </div>
@@ -136,7 +135,7 @@ export default function Concepts() {
           ))}
         </div>
 
-        <div id="abonnements">
+        <div id="abonnements" className="mt-20">
           <Pricing />
         </div>
       </div>

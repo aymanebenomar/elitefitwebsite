@@ -9,15 +9,16 @@ import Preinscription from "./pages/PreInscription";
 import Footer from "./components/Footer";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
+import Horaires from "./pages/Horaires";
 
-// New pages
+
 import ModernEquipment from "./pages/ModernEquipment";
 import PersonalCoaching from "./pages/PersonalCoaching";
 import AboutUs from "./pages/AboutUs";
 import Community from "./pages/Community";
 import TournamentDetail from "./pages/TournamentDetail";
 import NosGroupes from "./pages/Nosgroupes";
-import Horaires from "./pages/Horaires";
+import horaires from "./pages/Horaires";
 
 export default function App() {
   return (

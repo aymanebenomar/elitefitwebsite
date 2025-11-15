@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Dumbbell, Zap, Repeat } from 'lucide-react';
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import heroImage from "../assets/all.png";
-
 
 import equip1 from "../assets/all.png";
 import equip2 from "../assets/all2.png";
@@ -15,23 +14,15 @@ import equip5 from "../assets/dida.jpg";
 import equip6 from "../assets/dida2.jpg";
 
 export default function ModernEquipment() {
+  // Scroll to top on component mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const equipmentCategories = [
-    {
-      icon: Zap,
-      name: "Cardio",
-      description: "Des machines à la pointe de la technologie pour faire battre votre cœur.",
-    },
-    {
-      icon: Dumbbell,
-      name: "Force",
-      description: "Développez vos muscles avec notre large gamme d'haltères et de machines de résistance.",
-    },
-    {
-      icon: Repeat,
-      name: "Fonctional",
-      description: "Améliorez votre forme physique au quotidien avec notre équipement d'entraînement fonctionnel.",
-    },
+    { icon: Zap, name: "Cardio", description: "Des machines à la pointe de la technologie pour faire battre votre cœur." },
+    { icon: Dumbbell, name: "Force", description: "Développez vos muscles avec notre large gamme d'haltères et de machines de résistance." },
+    { icon: Repeat, name: "Fonctional", description: "Améliorez votre forme physique au quotidien avec notre équipement d'entraînement fonctionnel." },
   ];
 
   const equipmentList = [
@@ -46,7 +37,7 @@ export default function ModernEquipment() {
   const services = ["BODYBUILDING", "CROSSFIT", "TAEKWONDO", "JUDO", "CROSSFIT KIDS"];
 
   return (
-    <div className="min-h-screen bg-black flex flex-col">
+    <div className="min-h-screen bg-black flex flex-col overflow-x-hidden">
       <Navbar />
       
       {/* Hero Section */}
@@ -126,13 +117,9 @@ export default function ModernEquipment() {
         </div>
       </section>
 
-      {/* Scrolling Services Banners - Crossing Effect */}
-      <div className="relative h-48 bg-black">
-        <div className="absolute w-[150%] h-20 bg-red-700 -left-[25%]" 
-             style={{ 
-               transform: 'rotate(-2deg)',
-               top: '36px'
-             }}>
+      {/* Scrolling Services Banners */}
+      <div className="relative h-48 bg-black overflow-hidden">
+        <div className="absolute w-[150%] h-20 -left-[25%] top-36 rotate-[-2deg]">
           <div className="flex gap-8 animate-scroll-infinite py-6">
             {[...services, ...services, ...services, ...services, ...services, ...services].map((service, i) => (
               <React.Fragment key={i}>
@@ -144,11 +131,7 @@ export default function ModernEquipment() {
             ))}
           </div>
         </div>
-        <div className="absolute w-[150%] h-20 bg-white -left-[25%]" 
-             style={{ 
-               transform: 'rotate(2deg)',
-               top: '76px'
-             }}>
+        <div className="absolute w-[150%] h-20 -left-[25%] top-76 rotate-[2deg]">
           <div className="flex gap-8 animate-scroll-infinite-reverse py-6" style={{ animationDelay: '-15s' }}>
             {[...services, ...services, ...services, ...services, ...services, ...services].map((service, i) => (
               <React.Fragment key={`white-${i}`}>
@@ -199,28 +182,16 @@ export default function ModernEquipment() {
 
       <style jsx>{`
         @keyframes scroll-infinite {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(-${100 / 5}%);
-          }
+          from { transform: translateX(0); }
+          to { transform: translateX(-20%); }
         }
-        .animate-scroll-infinite {
-          animation: scroll-infinite 20s linear infinite;
-        }
-        
+        .animate-scroll-infinite { animation: scroll-infinite 20s linear infinite; }
+
         @keyframes scroll-infinite-reverse {
-          from {
-            transform: translateX(-${100 / 5}%);
-          }
-          to {
-            transform: translateX(0);
-          }
+          from { transform: translateX(-20%); }
+          to { transform: translateX(0); }
         }
-        .animate-scroll-infinite-reverse {
-          animation: scroll-infinite-reverse 20s linear infinite;
-        }
+        .animate-scroll-infinite-reverse { animation: scroll-infinite-reverse 20s linear infinite; }
       `}</style>
     </div>
   );

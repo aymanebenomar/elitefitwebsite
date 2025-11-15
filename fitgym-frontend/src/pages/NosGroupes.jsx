@@ -40,11 +40,6 @@ const additionalSections = [
     title: "Taekwondo",
     description: "Cours pour tous les niveaux, enfants et adultes.",
     groups: ["Lundi, Mercredi, Vendredi — 16:00", "Mardi, Jeudi — 17:00"]
-  },
-  {
-    title: "Kids",
-    description: "Activités ludiques et sportives pour les enfants.",
-    groups: ["Mercredi — 14:00", "Samedi — 10:00", "Dimanche — 11:00"]
   }
 ];
 

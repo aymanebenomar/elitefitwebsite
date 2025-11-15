@@ -33,7 +33,7 @@ const OurClub = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-5xl md:text-6xl font-extrabold mb-2 text-red-600 tracking-wide italic"
+          className="text-5xl md:text-6xl font-extrabold mb-2 text-red-600 tracking-wide "
         >
           ELITE CLUB
         </motion.h1>
@@ -89,7 +89,7 @@ const OurClub = () => {
             </div>
             <div className="flex items-center gap-3">
               <Clock className="text-red-500 w-5 h-5" />
-              <span>Lun - Dim : 6h00 - 23h00</span>
+              <span>Lun - Dim : 7h00 - 23h00</span>
             </div>
           </div>
 
@@ -103,16 +103,6 @@ const OurClub = () => {
           >
             Voir sur Google Maps
           </motion.a>
-
-          <motion.button
-            onClick={() => navigate("/modern-equipment")}
-            className="inline-flex items-center gap-2 mt-4 px-8 py-3 bg-transparent border-2 border-red-600 hover:bg-red-600 rounded-full text-white font-semibold tracking-wide transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            Découvrir Notre Club
-            <ArrowRight className="w-5 h-5" />
-          </motion.button>
         </div>
 
         {/* Map */}
@@ -162,7 +152,7 @@ const OurClub = () => {
         >
           <iframe
             className="absolute top-0 left-0 w-full h-full rounded-2xl shadow-2xl border border-gray-700"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ" // Placeholder video
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
