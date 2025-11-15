@@ -16,6 +16,7 @@ import PersonalCoaching from "./pages/PersonalCoaching";
 import Community from "./pages/Community";
 import TournamentDetail from "./pages/TournamentDetail";
 import NosGroupes from "./pages/Nosgroupes";
+import Horaires from "./pages/Horaires";
 
 export default function App() {
   return (
@@ -51,7 +52,8 @@ export default function App() {
       <Route path="/personal-coaching" element={<PersonalCoaching />} />
       <Route path="/community" element={<Community />} />
 
-      {/* New groupes page */}
+      {/* New groupes and Horaire pages */}
+      <Route path="/horaires" element={<Horaires />} />
       <Route path="/nos-groupes" element={<NosGroupes />} />
 
       {/* Tournament detail page */}
