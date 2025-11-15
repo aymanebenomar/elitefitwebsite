@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 // New pages
 import ModernEquipment from "./pages/ModernEquipment";
 import PersonalCoaching from "./pages/PersonalCoaching";
+import AboutUs from "./pages/AboutUs";
 import Community from "./pages/Community";
 import TournamentDetail from "./pages/TournamentDetail"; // <-- new page
 
@@ -48,6 +49,7 @@ export default function App() {
       {/* New Concept Pages */}
       <Route path="/modern-equipment" element={<ModernEquipment />} />
       <Route path="/personal-coaching" element={<PersonalCoaching />} />
+      <Route path="/about-us" element={<AboutUs />} />
       <Route path="/community" element={<Community />} />
 
       {/* Tournament detail page */}

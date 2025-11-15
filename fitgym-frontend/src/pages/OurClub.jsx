@@ -140,6 +140,36 @@ const OurClub = () => {
           </MapContainer>
         </motion.div>
       </motion.section>
+
+      {/* Video Section */}
+      <section className="w-full max-w-6xl px-6 py-20">
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="text-4xl md:text-5xl font-black text-white text-center mb-12"
+        >
+          DÉCOUVREZ NOTRE <span className="text-red-600">AMBIANCE</span>
+        </motion.h2>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="relative w-full"
+          style={{ paddingBottom: "56.25%" }} // 16:9 Aspect Ratio
+        >
+          <iframe
+            className="absolute top-0 left-0 w-full h-full rounded-2xl shadow-2xl border border-gray-700"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ" // Placeholder video
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </motion.div>
+      </section>
     </div>
   );
 };

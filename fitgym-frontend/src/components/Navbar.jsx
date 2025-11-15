@@ -41,6 +41,7 @@ const Navbar = () => {
     { id: "concept", label: "Concept", isSection: true },
     { id: "abonnements", label: "Abonnements", isSection: true },
     { id: "clubs", label: "Club", isSection: true },
+    { path: "/about-us", label: "About Us", isSection: false },
     { id: "preinscription", label: "Pré-inscription", isSection: true },
   ];
 
@@ -106,12 +107,22 @@ const Navbar = () => {
         <ul className="flex flex-col items-center gap-4 text-white px-6 py-4">
           {navLinks.map((link) => (
             <li key={link.id}>
-              <button
-                onClick={() => scrollToSection(link.id)}
-                className="hover:text-eliteGold transition-colors duration-300"
-              >
-                {link.label}
-              </button>
+              {link.isSection ? (
+                <button
+                  onClick={() => scrollToSection(link.id)}
+                  className="hover:text-eliteGold transition-colors duration-300"
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <Link
+                  to={link.path}
+                  className="hover:text-eliteGold transition-colors duration-300"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              )}
             </li>
           ))}
           <li>
