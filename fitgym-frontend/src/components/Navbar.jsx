@@ -45,6 +45,7 @@ const Navbar = () => {
     { id: "abonnements", label: "Abonnements", isSection: true },
     { id: "clubs", label: "Club", isSection: true },
     { path: "/horaires", label: "Horaires", isSection: false }, // ✅ new page link
+    { path: "/about-us", label: "About Us", isSection: false },
     { id: "preinscription", label: "Pré-inscription", isSection: true },
     { path: "/nos-groupes", label: "Nos Groupes", isSection: false },
   ];
@@ -116,7 +117,7 @@ const Navbar = () => {
       >
         <ul className="flex flex-col items-center gap-4 text-white px-6 py-4">
           {navLinks.map((link) => (
-            <li key={link.label}>
+            <li key={link.id}>
               {link.isSection ? (
                 <button
                   onClick={() => scrollToSection(link.id)}
@@ -127,8 +128,8 @@ const Navbar = () => {
               ) : (
                 <Link
                   to={link.path}
-                  onClick={() => setMenuOpen(false)}
                   className="hover:text-eliteGold transition-colors duration-300"
+                  onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
                 </Link>
