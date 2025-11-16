@@ -97,7 +97,7 @@ const NosGroupes = () => {
                     )}
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-eliteGold">{coach.program}</h2>
+                    <h2 className="text-2xl font-bold text-eliteGold">{coach.program}</h2> // yet
                   </div>
                 </div>
 
