@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { Dumbbell, Zap, Repeat } from 'lucide-react';
-// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import heroImage from "../assets/all.png";
+import heroImage from "../assets/competall.JPG";
 
-import equip1 from "../assets/all.png";
-import equip2 from "../assets/all2.png";
+import equip1 from "../assets/machine.jpg";
+import equip2 from "../assets/machine2.jpg";
 import equip3 from "../assets/all3.jpg";
 import equip4 from "../assets/barelite.jpg";
 import equip5 from "../assets/dida.jpg";
@@ -26,12 +25,8 @@ export default function ModernEquipment() {
   ];
 
   const equipmentList = [
-    { name: "TechnoGym Tapis de course", image: equip1, category: "Cardio" },
-    { name: "Life Fitness Elliptiques", image: equip2, category: "Cardio" },
-    { name: "Hammer Strength Racks", image: equip3, category: "Force" },
-    { name: "Zone de poids libres", image: equip4, category: "Force" },
-    { name: "Ensembles de kettlebell", image: equip5, category: "Fonctional" },
-    { name: "Entraîneurs de suspension TRX", image: equip6, category: "Fonctional" },
+    { name: "T Barre", image: equip1, category: "Cardio" },
+    { name: "Smith Machine", image: equip2, category: "Cardio" },
   ];
 
   const services = ["BODYBUILDING", "CROSSFIT", "TAEKWONDO", "JUDO", "CROSSFIT KIDS"];
@@ -146,7 +141,7 @@ export default function ModernEquipment() {
       </div>
 
       {/* Equipment Gallery Section */}
-      <section className="py-24 bg-black">
+      <section className="pt-16 pb-16 bg-black"> {/* Reduced top padding from 24 to 16 */}
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">

@@ -35,14 +35,6 @@ const coaches = [
   }
 ];
 
-const additionalSections = [
-  {
-    title: "Taekwondo",
-    description: "Cours pour tous les niveaux, enfants et adultes.",
-    groups: ["Lundi, Mercredi, Vendredi — 16:00", "Mardi, Jeudi — 17:00"]
-  }
-];
-
 const NosGroupes = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -97,10 +89,12 @@ const NosGroupes = () => {
                     )}
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-eliteGold">{coach.program}</h2> // yet
+                    <h2 className="text-2xl font-bold text-eliteGold">{coach.program}</h2>
+                    Coach Groups
                   </div>
                 </div>
 
+                {/* Schedule */}
                 {Object.entries(coach.schedule).map(([days, schedule], idx) => (
                   <div key={idx} className="mt-4">
                     <p className="text-gray-400 font-semibold mb-2">{days}</p>
@@ -117,30 +111,27 @@ const NosGroupes = () => {
                   </div>
                 ))}
               </motion.div>
-
-              {/* Extra sections only for Amina */}
-              {coach.name === "Coach Amina" &&
-                additionalSections.map((section, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 + idx * 0.2 }}
-                    className="bg-black border border-eliteGold/40 rounded-xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300"
-                  >
-                    <h2 className="text-2xl font-bold text-eliteGold mb-2">{section.title}</h2>
-                    <p className="text-gray-400 mb-4">{section.description}</p>
-                    <ul className="text-gray-300 space-y-1 ml-2">
-                      {section.groups.map((g, i) => (
-                        <li key={i}>{g}</li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                ))
-              }
             </div>
           ))}
         </div>
+
+        {/* Carousel placeholder */}
+        <section className="mt-16">
+          <h2 className="text-2xl font-bold text-eliteGold mb-4 text-center">Nos Images de Groupes</h2>
+          <div className="flex overflow-x-auto gap-4 p-4 snap-x snap-mandatory scroll-smooth">
+            {/* Add your images here */}
+            <div className="flex-none w-64 h-40 bg-gray-800 rounded-lg snap-center flex items-center justify-center text-gray-400">
+              Image 1
+            </div>
+            <div className="flex-none w-64 h-40 bg-gray-800 rounded-lg snap-center flex items-center justify-center text-gray-400">
+              Image 2
+            </div>
+            <div className="flex-none w-64 h-40 bg-gray-800 rounded-lg snap-center flex items-center justify-center text-gray-400">
+              Image 3
+            </div>
+          </div>
+        </section>
+
       </section>
 
       <Footer />
