@@ -44,8 +44,7 @@ const Navbar = () => {
     { id: "concept", label: "Concept", isSection: true },
     { id: "abonnements", label: "Abonnements", isSection: true },
     { id: "clubs", label: "Club", isSection: true },
-    { path: "/horaires", label: "Horaires", isSection: false }, // ✅ new page link
-    { path: "/about-us", label: "About Us", isSection: false },
+    { path: "/horaires", label: "Horaires", isSection: false },
     { id: "preinscription", label: "Pré-inscription", isSection: true },
     { path: "/nos-groupes", label: "Nos Groupes", isSection: false },
   ];

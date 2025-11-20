@@ -12,93 +12,9 @@ import bareliteImg from '../assets/barelite.jpg';
 import tournement1Img from '../assets/tournement1.png';
 import tournement2Img from '../assets/tournement2.png';
 
-// Schedule Data
-const scheduleData = [
-  {
-    time: "5:00",
-    endTime: "6:00",
-    classes: {
-      monday: { name: "Body Combat", instructor: "Dida", color: "green-500" },
-      tuesday: { name: "Sh'Bam", instructor: "Dida", color: "yellow-500" },
-      wednesday: null,
-      thursday: { name: "Bodypump", instructor: "Dida", color: "red-500" },
-      friday: { name: "Zumba", instructor: "Mina", color: "blue-500" },
-      saturday: { name: "Les Mills Grit", instructor: "Dida", color: "purple-500" },
-      sunday: null
-    }
-  },
-  {
-    time: "6:00",
-    endTime: "7:00",
-    classes: {
-      monday: null,
-      tuesday: { name: "Cxworx", instructor: "Maya", color: "orange-500" },
-      wednesday: { name: "Cxworx", instructor: "Dida", color: "orange-500" },
-      thursday: { name: "Cxworx", instructor: "Dida", color: "orange-500" },
-      friday: null,
-      saturday: { name: "Bodypump", instructor: "Mina", color: "red-500" },
-      sunday: { name: "Zumba", instructor: "Dida", color: "blue-500" }
-    }
-  },
-  {
-    time: "13:00",
-    endTime: "14:00",
-    classes: {
-      monday: { name: "Sh'Bam", instructor: "Dida", color: "yellow-500" },
-      tuesday: { name: "Bodypump", instructor: "Dida", color: "red-500" },
-      wednesday: null,
-      thursday: { name: "Cxworx", instructor: "Dida", color: "orange-500" },
-      friday: { name: "Les Mills Grit", instructor: "Dida", color: "purple-500" },
-      saturday: { name: "Zumba", instructor: "Dida", color: "blue-500" },
-      sunday: null
-    }
-  },
-  {
-    time: "14:00",
-    endTime: "15:00",
-    classes: {
-      monday: { name: "Cxworx", instructor: "Dida", color: "orange-500" },
-      tuesday: { name: "Body Combat", instructor: "Dida", color: "green-500" },
-      wednesday: { name: "Bodypump", instructor: "Maya", color: "red-500" },
-      thursday: null,
-      friday: { name: "Sh'Bam", instructor: "Dida", color: "yellow-500" },
-      saturday: { name: "Sh'Bam", instructor: "Mohammed", color: "yellow-500" },
-      sunday: { name: "Bodypump", instructor: "Dida", color: "red-500" }
-    }
-  },
-  {
-    time: "17:00",
-    endTime: "18:00",
-    classes: {
-      monday: { name: "Body Combat", instructor: "Amara", color: "green-500" },
-      tuesday: null,
-      wednesday: { name: "Sh'Bam", instructor: "Dida", color: "yellow-500" },
-      thursday: { name: "Cxworx", instructor: "Maya", color: "orange-500" },
-      friday: { name: "Bodypump", instructor: "Dida", color: "red-500" },
-      saturday: { name: "Les Mills Grit", instructor: "Dida", color: "purple-500" },
-      sunday: { name: "Zumba", instructor: "Maya", color: "blue-500" }
-    }
-  },
-  {
-    time: "18:00",
-    endTime: "19:00",
-    classes: {
-      monday: { name: "Les Mills Grit", instructor: "Nova", color: "purple-500" },
-      tuesday: { name: "Sh'Bam", instructor: "Dida", color: "yellow-500" },
-      wednesday: { name: "Cxworx", instructor: "Mina", color: "orange-500" },
-      thursday: { name: "Bodypump", instructor: "Dida", color: "red-500" },
-      friday: null,
-      saturday: { name: "Zumba", instructor: "Dida", color: "blue-500" },
-      sunday: { name: "Les Mills Grit", instructor: "Amara", color: "purple-500" }
-    }
-  }
-];
-
-const WEEK_DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
-
 const AboutUs = () => {
   return (
-    <div className="bg-gray-900 text-white min-h-screen flex flex-col">
+    <div className="bg-black text-white min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow">
         {/* Hero Section */}
@@ -127,9 +43,9 @@ const AboutUs = () => {
         </section>
 
         {/* Benefits Section */}
-        <section className="py-28 bg-gray-900 px-6 md:px-12 lg:px-24">
+        <section className="py-28 bg-black px-6 md:px-12 lg:px-24">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-wider text-center mb-16 text-white">
+            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-wider text-center mb-16 text-red-500">
               Pourquoi choisir notre Elite Fit Club ?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -220,59 +136,6 @@ const AboutUs = () => {
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Schedule Section */}
-        <section className="py-28 bg-black px-6 md:px-12 lg:px-24">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-wider mb-6 text-red-500">
-                Programme des Cours Elite Fit Club
-              </h2>
-              <div className="flex flex-col items-center gap-4 mb-6">
-                <p className="text-gray-400 text-lg">
-                  Du <span className="text-white font-semibold">24 Juin 2026</span> au <span className="text-white font-semibold">30 Juin 2026</span>
-                </p>
-              </div>
-            </div>
-            
-            <div className="overflow-x-auto">
-              <table className="min-w-full bg-gray-900 rounded-lg overflow-hidden">
-                <thead>
-                  <tr className="bg-red-500">
-                    <th className="py-4 px-6 text-white text-left text-base font-bold uppercase">Heure</th>
-                    <th className="py-4 px-6 text-white text-left text-base font-bold uppercase">Lundi</th>
-                    <th className="py-4 px-6 text-white text-left text-base font-bold uppercase">Mardi</th>
-                    <th className="py-4 px-6 text-white text-left text-base font-bold uppercase">Mercredi</th>
-                    <th className="py-4 px-6 text-white text-left text-base font-bold uppercase">Jeudi</th>
-                    <th className="py-4 px-6 text-white text-left text-base font-bold uppercase">Vendredi</th>
-                    <th className="py-4 px-6 text-white text-left text-base font-bold uppercase">Samedi</th>
-                    <th className="py-4 px-6 text-white text-left text-base font-bold uppercase">Dimanche</th>
-                  </tr>
-                </thead>
-                <tbody className="text-gray-300">
-                  {scheduleData.map((slot, index) => (
-                    <tr key={slot.time} className={`border-b border-gray-800 ${index % 2 === 1 ? 'bg-gray-900/50' : ''}`}>
-                      <td className="py-4 px-6 text-white font-semibold align-top">
-                        <div>{slot.time}</div>
-                        <div className="text-gray-500 text-sm">{slot.endTime}</div>
-                      </td>
-                      {WEEK_DAYS.map((day) => (
-                        <td key={day} className="py-4 px-6 align-top">
-                          {slot.classes[day] && (
-                            <div className={`border-l-4 border-${slot.classes[day].color} pl-3`}>
-                              <div className="font-bold text-white">{slot.classes[day].name}</div>
-                              <div className="text-sm text-gray-400">{slot.classes[day].instructor}</div>
-                            </div>
-                          )}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
             </div>
           </div>
         </section>
