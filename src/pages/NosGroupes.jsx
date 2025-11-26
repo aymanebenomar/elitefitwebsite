@@ -29,7 +29,7 @@ const coaches = [
     }
   },
   {
-    name: "Coach Amina",
+    name: "Coach Mina",
     photo: coach2,
     program: "CrossFit Woman",
     schedule: {
