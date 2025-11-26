@@ -7,10 +7,7 @@ import heroImage from "../assets/competall.JPG";
 
 import equip1 from "../assets/machine.jpg";
 import equip2 from "../assets/machine2.jpg";
-import equip3 from "../assets/all3.jpg";
-import equip4 from "../assets/barelite.jpg";
-import equip5 from "../assets/dida.jpg";
-import equip6 from "../assets/dida2.jpg";
+
 
 export default function ModernEquipment() {
   // Scroll to top on component mount
