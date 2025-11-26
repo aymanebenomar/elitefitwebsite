@@ -17,8 +17,8 @@ import PersonalCoaching from "./pages/PersonalCoaching";
 import AboutUs from "./pages/AboutUs";
 import Community from "./pages/Community";
 import TournamentDetail from "./pages/TournamentDetail";
-import NosGroupes from "./pages/Nosgroupes";
-import horaires from "./pages/Horaires";
+import NosGroupes from "./pages/NosGroupes";
+
 
 export default function App() {
   return (
