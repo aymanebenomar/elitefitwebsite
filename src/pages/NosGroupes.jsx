@@ -7,10 +7,10 @@ import coach1 from '../assets/dida2.jpg';
 import coach2 from '../assets/girl2.jpg';
 
 // Group images
-import kids1 from '../assets/group1.jpg';
-import kids2 from '../assets/kids2.jpg';
-import kids3 from '../assets/kids3.jpg';
-import group2 from '../assets/group2.jpg';
+import kids1 from '../assets/group1.JPG';
+import kids2 from '../assets/kids2.JPG';
+import kids3 from '../assets/kids3.JPG';
+import group2 from '../assets/group2.JPG';
 
 const coaches = [
   {
